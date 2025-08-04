@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const CLINIC_NAME = process.env.CLINIC_NAME!;
 const NP_FIRST_NAME = process.env.NP_FIRST_NAME!;
 
@@ -10,15 +12,15 @@ export default function About() {
           <div className="flex justify-between items-center py-6">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <a href="/" className="text-2xl font-bold text-gray-900">{CLINIC_NAME}</a>
+                <Link href="/" className="text-2xl font-bold text-gray-900">{CLINIC_NAME}</Link>
               </div>
             </div>
             <nav className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <a href="/" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                <a href="/about" className="text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">About</a>
-                <a href="/services" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Services</a>
-                <a href="/contact" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                <Link href="/" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</Link>
+                <Link href="/about" className="text-indigo-600 px-3 py-2 rounded-md text-sm font-medium">About</Link>
+                <Link href="/services" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Services</Link>
+                <Link href="/contact" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</Link>
               </div>
             </nav>
           </div>

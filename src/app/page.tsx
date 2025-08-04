@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const BOOKING_URL = process.env.BOOKING_URL!;
 const CLINIC_NAME = process.env.CLINIC_NAME!;
 const NP_FIRST_NAME = process.env.NP_FIRST_NAME!;
@@ -16,9 +18,9 @@ export default function Home() {
             </div>
             <nav className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <a href="#about" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
-                <a href="#services" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Services</a>
-                <a href="#contact" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                <Link href="#about" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</Link>
+                <Link href="#services" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Services</Link>
+                <Link href="#contact" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</Link>
               </div>
             </nav>
           </div>
@@ -37,22 +39,22 @@ export default function Home() {
           </p>
           <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
             <div className="rounded-md shadow">
-              <a
+              <Link
                 href={BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
               >
                 Book Appointment
-              </a>
+              </Link>
             </div>
             <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-              <a
+              <Link
                 href="#about"
                 className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
               >
                 Learn More
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -149,14 +151,14 @@ export default function Home() {
                 Ready to take the next step in your health journey? Book an appointment today.
               </p>
               <div className="mt-8">
-                <a
+                <Link
                   href={BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
                 >
                   Book Appointment Now
-                </a>
+                </Link>
               </div>
             </div>
           </div>
