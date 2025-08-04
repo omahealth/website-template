@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-const CLINIC_NAME = process.env.CLINIC_NAME!;
-const BOOKING_URL = process.env.BOOKING_URL!;
+const CLINIC_NAME = process.env.CLINIC_NAME || 'Your Clinic Name';
+const BOOKING_URL = process.env.BOOKING_URL || '#';
 
 export default function Contact() {
   return (
