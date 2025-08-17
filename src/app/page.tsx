@@ -157,7 +157,7 @@ const HealthcareWebsite: React.FC = () => {
           {/* Mobile Navigation */}
           {isMenuOpen && (
             <div className="lg:hidden py-6 border-t border-gray-100 bg-white rounded-b-2xl shadow-lg">
-              <div className="flex flex-col space-y-6">
+              <div className="flex flex-col space-y-10">
                 <button 
                   onClick={() => scrollToSection('home')}
                   className="text-left text-sm font-medium tracking-wide"
@@ -206,7 +206,7 @@ const HealthcareWebsite: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
-              <div className="space-y-6">
+              <div className="space-y-10">
                 <span className="text-sm font-semibold tracking-widest uppercase px-4 py-2 rounded-full" 
                       style={{ color: theme.dark, backgroundColor: theme.yellow }}>
                   Welcome to {CLINIC_NAME}
@@ -273,7 +273,7 @@ const HealthcareWebsite: React.FC = () => {
       {/* Services Section */}
       <section id="services" className="py-32 px-6 lg:px-8" style={{ backgroundColor: '#fafbfb' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-6 mb-20">
+          <div className="text-center space-y-10 mb-20">
             <span className="text-sm font-semibold tracking-widest uppercase px-4 py-2 rounded-full" 
                   style={{ color: theme.dark, backgroundColor: theme.yellow }}>
               OUR SERVICES
@@ -287,7 +287,7 @@ const HealthcareWebsite: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <div key={index} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
-                <div className="space-y-6">
+                <div className="space-y-10">
                   <div className="w-16 h-16 rounded-xl flex items-center justify-center"
                        style={{ backgroundColor: `${theme.teal}15` }}>
                     {service.icon}
@@ -312,7 +312,7 @@ const HealthcareWebsite: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
-              <div className="space-y-6">
+              <div className="space-y-10">
                 <span className="text-sm font-semibold tracking-widest uppercase px-4 py-2 rounded-full" 
                       style={{ color: theme.dark, backgroundColor: theme.yellow }}>
                   ABOUT {NP_FIRST_NAME}
@@ -369,7 +369,7 @@ const HealthcareWebsite: React.FC = () => {
       {/* Contact Section */}
       <section id="contact" className="py-32 px-6 lg:px-8" style={{ backgroundColor: '#fafbfb' }}>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-6 mb-20">
+          <div className="text-center space-y-10 mb-20">
             <span className="text-sm font-semibold tracking-widest uppercase px-4 py-2 rounded-full" 
                   style={{ color: theme.dark, backgroundColor: theme.yellow }}>
               GET IN TOUCH
@@ -382,7 +382,7 @@ const HealthcareWebsite: React.FC = () => {
           
           <div className="grid md:grid-cols-2 gap-16">
             <div className="space-y-8">
-              <div className="space-y-6">
+              <div className="space-y-10">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                        style={{ backgroundColor: `${theme.teal}15` }}>
@@ -413,7 +413,7 @@ const HealthcareWebsite: React.FC = () => {
             </div>
             
             <div className="bg-white p-8 rounded-2xl shadow-sm">
-              <div className="text-center space-y-6">
+              <div className="text-center space-y-10">
                 <h3 className="text-2xl font-semibold" style={{ color: theme.dark }}>
                   Schedule Your Consultation
                 </h3>
