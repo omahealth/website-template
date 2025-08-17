@@ -1,8 +1,6 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 // Environment variables with fallbacks
 const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL || '#';
@@ -11,299 +9,220 @@ const NP_FIRST_NAME = process.env.NEXT_PUBLIC_NP_FIRST_NAME || 'Dr. Smith';
 const CLINIC_PHONE = process.env.NEXT_PUBLIC_CLINIC_PHONE || '(555) 123-4567';
 const CLINIC_ADDRESS = process.env.NEXT_PUBLIC_CLINIC_ADDRESS || '123 Healthcare Ave, City, State 12345';
 
-// Professional healthcare color palette
-const theme = {
-  dark: '#264653',     // Deep teal for text and depth
-  teal: '#2a9d8f',     // Primary teal for actions
-  yellow: '#e9c46a',   // Warm yellow for highlights
-  orange: '#f4a261',   // Orange for secondary actions
-  coral: '#e76f51',    // Coral for urgent/important elements
-  bg: '#fefefe',       // Clean white background
-  lightTeal: '#a7c5bd' // Light teal for subtle elements
-};
-
-interface ServiceItem {
+interface Service {
   title: string;
   description: string;
   icon: React.ReactNode;
 }
 
-const HealthcareWebsite: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-    setIsMenuOpen(false);
-  };
-
-  const services: ServiceItem[] = [
+export default function HomePage(): React.JSX.Element {
+  const services: Service[] = [
     {
-      title: "Telehealth Consultations",
-      description: "Convenient virtual appointments from the comfort of your home with secure, HIPAA-compliant technology.",
+      title: "Primary Care",
+      description: "Total health assessments, preventive care, and management of chronic conditions.",
       icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: theme.teal }}>
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4h3a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2h3z" />
+        <svg className="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       )
     },
     {
-      title: "Preventive Care",
-      description: "Comprehensive health screenings and wellness programs to keep you healthy and prevent illness.",
+      title: "Pediatric Care", 
+      description: "Specialized medical care for infants, children, and adolescents with gentle, family-friendly approach.",
       icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: theme.teal }}>
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.031 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      )
-    },
-    {
-      title: "Chronic Disease Management",
-      description: "Ongoing support and monitoring for conditions like diabetes, hypertension, and heart disease.",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: theme.teal }}>
+        <svg className="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
         </svg>
       )
+    },
+    {
+      title: "Women's Health",
+      description: "Complete women's healthcare including annual exams, reproductive health, and wellness screenings.",
+      icon: (
+        <svg className="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+      )
+    },
+    {
+      title: "Vaccinations",
+      description: "Up-to-date immunizations for all ages, including travel vaccines and flu shots.",
+      icon: (
+        <svg className="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      )
+    },
+    {
+      title: "Laboratory Services",
+      description: "Partner site lab testing for quick results and convenient patient care.",
+      icon: (
+        <svg className="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+        </svg>
+      )
+    },
+    {
+      title: "Urgent Care",
+      description: "Same-day appointments for non-emergency medical concerns and minor injuries.",
+      icon: (
+        <svg className="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      )
+    }
+  ]
+
+  const features: string[] = [
+    "Board-certified clinicians",
+    "State-of-the-art medical equipment", 
+    "Electronic health records for seamless care",
+    "Flexible scheduling and telehealth offerings"
+  ]
+
+  // Contact information with explicit typing
+  const contactInfo: Array<{
+    icon: React.ReactNode;
+    text: string;
+  }> = [
+    { 
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+      ), 
+      text: CLINIC_PHONE 
+    },
+    { 
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      ), 
+      text: CLINIC_ADDRESS 
     }
   ];
 
+  // Navigation links with explicit typing
+  const navLinks: Array<{
+    href: string;
+    text: string;
+  }> = [
+    { href: "#services", text: "Services" },
+    { href: "#about", text: "About" },
+    { href: "#contact", text: "Contact" }
+  ];
+
+  const footerLinks: Array<{
+    href: string;
+    text: string;
+  }> = [
+    { href: "#services", text: "Services" },
+    { href: "#about", text: "About Us" },
+    { href: "#contact", text: "Contact" },
+  ];
+
+  const officeHours: Array<{
+    day: string;
+    hours: string;
+  }> = [
+    { day: "Monday - Friday", hours: "8:00 AM - 6:00 PM" },
+    { day: "Saturday", hours: "9:00 AM - 2:00 PM" },
+    { day: "Sunday", hours: "Closed" }
+  ];
   return (
-    <div className="min-h-screen" style={{ backgroundColor: theme.bg }}>
-      {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-xl shadow-sm' : 'bg-transparent'
-      }`}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="bg-white shadow-sm border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
-            {/* Logo */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center" 
-                   style={{ backgroundColor: theme.teal }}>
-                <div className="w-5 h-5 rounded-md bg-white flex items-center justify-center">
-                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: theme.teal }}></div>
-                </div>
-              </div>
-              <div className="text-xl font-semibold tracking-wide" style={{ color: theme.dark }}>
+            <div className="flex items-center">
+              <h1 className="text-2xl font-bold text-teal-900">
                 {CLINIC_NAME}
-              </div>
+              </h1>
             </div>
-
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-12">
-              <button 
-                onClick={() => scrollToSection('home')}
-                className="text-sm font-medium tracking-wide transition-colors duration-300 hover:opacity-70"
-                style={{ color: theme.dark }}
-              >
-                Home
-              </button>
-              <button 
-                onClick={() => scrollToSection('services')}
-                className="text-sm font-medium tracking-wide transition-colors duration-300 hover:opacity-70"
-                style={{ color: theme.dark }}
-              >
-                Services
-              </button>
-              <button 
-                onClick={() => scrollToSection('about')}
-                className="text-sm font-medium tracking-wide transition-colors duration-300 hover:opacity-70"
-                style={{ color: theme.dark }}
-              >
-                About
-              </button>
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="text-sm font-medium tracking-wide transition-colors duration-300 hover:opacity-70"
-                style={{ color: theme.dark }}
-              >
-                Contact
-              </button>
-              <Link
-                href={BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-3 rounded-full text-sm font-semibold tracking-wide text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                style={{ backgroundColor: theme.teal }}
-              >
-                Book Appointment
-              </Link>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 rounded-lg transition-colors duration-300"
-              style={{ color: theme.dark }}
-            >
-              {isMenuOpen ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
-          </div>
-
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="lg:hidden py-6 border-t border-gray-100 bg-white rounded-b-2xl shadow-lg">
-              <div className="flex flex-col space-y-10">
-                <button 
-                  onClick={() => scrollToSection('home')}
-                  className="text-left text-sm font-medium tracking-wide"
-                  style={{ color: theme.dark }}
+            <nav className="hidden md:flex space-x-8">
+              {navLinks.map((link) => (
+                <Link 
+                  key={link.href}
+                  href={link.href} 
+                  className="text-gray-700 hover:text-teal-900 transition-colors"
                 >
-                  Home
-                </button>
-                <button 
-                  onClick={() => scrollToSection('services')}
-                  className="text-left text-sm font-medium tracking-wide"
-                  style={{ color: theme.dark }}
-                >
-                  Services
-                </button>
-                <button 
-                  onClick={() => scrollToSection('about')}
-                  className="text-left text-sm font-medium tracking-wide"
-                  style={{ color: theme.dark }}
-                >
-                  About
-                </button>
-                <button 
-                  onClick={() => scrollToSection('contact')}
-                  className="text-left text-sm font-medium tracking-wide"
-                  style={{ color: theme.dark }}
-                >
-                  Contact
-                </button>
-                <Link
-                  href={BOOKING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block px-8 py-3 rounded-full text-sm font-semibold tracking-wide text-white text-center"
-                  style={{ backgroundColor: theme.teal }}
-                >
-                  Book Appointment
+                  {link.text}
                 </Link>
-              </div>
-            </div>
-          )}
+              ))}
+            </nav>
+          </div>
         </div>
-      </nav>
+      </header>
 
       {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20 px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <section className="relative bg-gradient-to-br from-teal-50 to-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <div className="space-y-10">
-                <span className="text-sm font-semibold tracking-widest uppercase px-4 py-2 rounded-full" 
-                      style={{ color: theme.dark, backgroundColor: theme.yellow }}>
-                  Welcome to {CLINIC_NAME}
-                </span>
-                <h1 className="text-5xl lg:text-6xl font-light leading-tight" style={{ color: theme.dark }}>
-                  Modern Healthcare
-                  <span className="block font-normal">Made Personal</span>
-                </h1>
-                <p className="text-lg leading-relaxed opacity-80 max-w-lg" style={{ color: theme.dark }}>
-                  Experience compassionate, evidence-based healthcare with {NP_FIRST_NAME}. 
-                  We provide personalized telehealth services focused on your wellness journey.
-                </p>
-              </div>
-              
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Your Trusted Partner in{' '}
+                <span className="text-teal-600">Personalized Health</span>
+              </h2>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                A new era where modern technology meets patient-centered care, at affordable and friendly prices.
+              </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href={BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-4 rounded-full text-white font-semibold tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center justify-center group"
-                  style={{ backgroundColor: theme.teal }}
+                  className="bg-teal-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-teal-700 transition-colors text-center"
                 >
-                  Book Consultation
-                  <svg className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  Schedule Appointment
                 </Link>
-                <button 
-                  onClick={() => scrollToSection('services')}
-                  className="px-8 py-4 rounded-full font-semibold tracking-wide transition-all duration-300 hover:scale-105 border-2"
-                  style={{ 
-                    color: theme.teal, 
-                    borderColor: theme.teal,
-                    backgroundColor: 'transparent'
-                  }}
+                <Link
+                  href="#about"
+                  className="border-2 border-teal-600 text-teal-600 px-8 py-4 rounded-lg font-semibold hover:bg-teal-50 transition-colors text-center"
                 >
                   Learn More
-                </button>
+                </Link>
               </div>
             </div>
-            
             <div className="relative">
-              <div className="w-full h-96 rounded-3xl overflow-hidden shadow-2xl"
-                   style={{ backgroundColor: theme.lightTeal }}>
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="text-center space-y-4">
-                    <div className="w-24 h-24 rounded-full mx-auto overflow-hidden">
-                      <Image 
-                        src="/img/image-1.jpg" 
-                        alt="Professional Healthcare" 
-                        width={96} 
-                        height={96} 
-                        className="w-full h-full object-cover" 
-                      />
-                    </div>                    <p className="text-lg font-medium" style={{ color: theme.dark }}>
-                      Professional Healthcare
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <Image
+                src="/img/image-1.jpg"
+                alt="Modern medical facility"
+                width={600}
+                height={400}
+                className="rounded-xl shadow-2xl"
+                priority
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-32 px-6 lg:px-8" style={{ backgroundColor: '#fafbfb' }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-10 mb-20">
-            <span className="text-sm font-semibold tracking-widest uppercase px-4 py-2 rounded-full" 
-                  style={{ color: theme.dark, backgroundColor: theme.yellow }}>
-              OUR SERVICES
-            </span>
-            <h2 className="text-4xl lg:text-5xl font-light leading-tight max-w-3xl mx-auto" 
-                style={{ color: theme.dark }}>
-              Comprehensive Care for Every Need
-            </h2>
+      <section id="services" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h3 className="text-3xl font-bold text-gray-900 mb-4">
+              Our Medical Services
+            </h3>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              From routine checkups to specialized treatments, we offer comprehensive 
+              healthcare services for patients of all ages.
+            </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div key={index} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
-                <div className="space-y-10">
-                  <div className="w-16 h-16 rounded-xl flex items-center justify-center"
-                       style={{ backgroundColor: `${theme.teal}15` }}>
-                    {service.icon}
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold" style={{ color: theme.dark }}>
-                      {service.title}
-                    </h3>
-                    <p className="leading-relaxed opacity-80" style={{ color: theme.dark }}>
-                      {service.description}
-                    </p>
-                  </div>
-                </div>
+              <div key={index} className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div className="mb-4">{service.icon}</div>
+                <h4 className="text-xl font-semibold text-gray-900 mb-3">
+                  {service.title}
+                </h4>
+                <p className="text-gray-600 leading-relaxed">
+                  {service.description}
+                </p>
               </div>
             ))}
           </div>
@@ -311,60 +230,29 @@ const HealthcareWebsite: React.FC = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-32 px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <div className="space-y-10">
-                <span className="text-sm font-semibold tracking-widest uppercase px-4 py-2 rounded-full" 
-                      style={{ color: theme.dark, backgroundColor: theme.yellow }}>
-                  ABOUT {NP_FIRST_NAME}
-                </span>
-                <h2 className="text-4xl lg:text-5xl font-light leading-tight" style={{ color: theme.dark }}>
-                  Dedicated to Your
-                  <span className="block font-normal">Health & Wellness</span>
-                </h2>
-                <p className="text-lg leading-relaxed opacity-80" style={{ color: theme.dark }}>
-                  {NP_FIRST_NAME} brings years of experience in providing compassionate, 
-                  patient-centered care. Our approach combines evidence-based medicine with 
-                  personalized attention to help you achieve your health goals.
-                </p>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: theme.teal }}></div>
-                  <span className="font-medium" style={{ color: theme.dark }}>Board-Certified Nurse Practitioner</span>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: theme.teal }}></div>
-                  <span className="font-medium" style={{ color: theme.dark }}>Telehealth Specialist</span>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: theme.teal }}></div>
-                  <span className="font-medium" style={{ color: theme.dark }}>Preventive Care Expert</span>
-                </div>
-              </div>
-            </div>
-            
+      <section id="about" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="w-full h-96 rounded-3xl overflow-hidden shadow-2xl"
-                   style={{ backgroundColor: theme.lightTeal }}>
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="text-center space-y-4">
-                    <div className="w-24 h-24 rounded-full mx-auto overflow-hidden">
-                      <Image 
-                        src="/img/image-2.jpg" 
-                        alt="Professional Healthcare" 
-                        width={96} 
-                        height={96} 
-                        className="w-full h-full object-cover" 
-                      />
-                    </div>                    <p className="text-lg font-medium" style={{ color: theme.dark }}>
-                      Excellence in Care
-                    </p>
+              <Image
+                src="/img/image-2.jpg"
+                alt="Healthcare professionals"
+                width={600}
+                height={400}
+                className="rounded-xl shadow-xl"
+              />
+            </div>
+            <div className="space-y-6">
+              <h3 className="text-3xl font-bold text-gray-900">
+                Trusted Healthcare Partners
+              </h3>
+              <div className="space-y-4">
+                {features.map((feature, index) => (
+                  <div key={index} className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-teal-600 rounded-full"></div>
+                    <span className="text-gray-700">{feature}</span>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -372,97 +260,69 @@ const HealthcareWebsite: React.FC = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-32 px-6 lg:px-8" style={{ backgroundColor: '#fafbfb' }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-10 mb-20">
-            <span className="text-sm font-semibold tracking-widest uppercase px-4 py-2 rounded-full" 
-                  style={{ color: theme.dark, backgroundColor: theme.yellow }}>
-              GET IN TOUCH
-            </span>
-            <h2 className="text-4xl lg:text-5xl font-light leading-tight max-w-3xl mx-auto" 
-                style={{ color: theme.dark }}>
-              Ready to Start Your Health Journey?
-            </h2>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-16">
-            <div className="space-y-8">
-              <div className="space-y-10">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                       style={{ backgroundColor: `${theme.teal}15` }}>
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: theme.teal }}>
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-2" style={{ color: theme.dark }}>Phone</h3>
-                    <p className="opacity-80" style={{ color: theme.dark }}>{CLINIC_PHONE}</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                       style={{ backgroundColor: `${theme.teal}15` }}>
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: theme.teal }}>
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-2" style={{ color: theme.dark }}>Address</h3>
-                    <p className="opacity-80" style={{ color: theme.dark }}>{CLINIC_ADDRESS}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
-              <div className="text-center space-y-10">
-                <h3 className="text-2xl font-semibold" style={{ color: theme.dark }}>
-                  Schedule Your Consultation
-                </h3>
-                <p className="opacity-80" style={{ color: theme.dark }}>
-                  Book your telehealth appointment today and take the first step towards better health.
-                </p>
-                <Link
-                  href={BOOKING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block px-8 py-4 rounded-full text-white font-semibold tracking-wide transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                  style={{ backgroundColor: theme.teal }}
-                >
-                  Book Now
-                </Link>
-              </div>
+      <section id="contact" className="py-20 bg-teal-900 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="space-y-8">
+            <h3 className="text-3xl font-bold">
+              Ready to Schedule Your Visit?
+            </h3>
+            <p className="text-xl text-teal-100 leading-relaxed max-w-2xl mx-auto">
+              Contact us today to book your appointment or learn more about our services. 
+              We&apos;re here to support your family&apos;s health journey.
+            </p>
+            <div className="pt-8">
+              <Link
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-white text-teal-900 px-8 py-4 rounded-lg font-semibold hover:bg-teal-50 transition-colors"
+              >
+                Schedule Appointment
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 lg:px-8" style={{ backgroundColor: theme.dark }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-4">
-            <div className="flex items-center justify-center space-x-3">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center" 
-                   style={{ backgroundColor: theme.teal }}>
-                <div className="w-4 h-4 rounded-md bg-white flex items-center justify-center">
-                  <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: theme.teal }}></div>
-                </div>
-              </div>
-              <div className="text-lg font-semibold text-white">
-                {CLINIC_NAME}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h5 className="text-xl font-semibold mb-4">{CLINIC_NAME}</h5>
+              <p className="text-gray-400 leading-relaxed">
+                Your Trusted Partner in Personalized Health
+              </p>
+            </div>
+            <div>
+              <h6 className="text-lg font-semibold mb-4">Quick Links</h6>
+              <div className="space-y-2">
+                {footerLinks.map((link, index) => (
+                  <Link key={index} href={link.href} className="block text-gray-400 hover:text-white transition-colors">
+                    {link.text}
+                  </Link>
+                ))}
               </div>
             </div>
-            <p className="text-white/60">
-              © 2024 {CLINIC_NAME}. All rights reserved.
-            </p>
+            <div>
+              <h6 className="text-lg font-semibold mb-4">Office Hours</h6>
+              <div className="space-y-2 text-gray-400">
+                {officeHours.map((schedule, index) => (
+                  <div key={index}>{schedule.day}: {schedule.hours}</div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="mt-8 text-center">
+            <div className="text-sm text-gray-400">
+              Emergency services available 24/7
+            </div>
+          </div>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2025 {CLINIC_NAME}. All rights reserved.</p>
           </div>
         </div>
       </footer>
-    </div>  
-  );
-};
-
-export default HealthcareWebsite;
+    </div>
+  )
+}
