@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Environment variables with fallbacks
 const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL || '#';
@@ -253,13 +254,15 @@ const HealthcareWebsite: React.FC = () => {
                    style={{ backgroundColor: theme.lightTeal }}>
                 <div className="w-full h-full flex items-center justify-center">
                   <div className="text-center space-y-4">
-                    <div className="w-24 h-24 rounded-full mx-auto flex items-center justify-center"
-                         style={{ backgroundColor: theme.teal }}>
-                      <svg className="w-12 h-12" fill="none" stroke="white" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4h3a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2h3z" />
-                      </svg>
-                    </div>
-                    <p className="text-lg font-medium" style={{ color: theme.dark }}>
+                    <div className="w-24 h-24 rounded-full mx-auto overflow-hidden">
+                      <Image 
+                        src="/img/image-1.jpg" 
+                        alt="Professional Healthcare" 
+                        width={96} 
+                        height={96} 
+                        className="w-full h-full object-cover" 
+                      />
+                    </div>                    <p className="text-lg font-medium" style={{ color: theme.dark }}>
                       Professional Healthcare
                     </p>
                   </div>
@@ -349,13 +352,15 @@ const HealthcareWebsite: React.FC = () => {
                    style={{ backgroundColor: theme.lightTeal }}>
                 <div className="w-full h-full flex items-center justify-center">
                   <div className="text-center space-y-4">
-                    <div className="w-24 h-24 rounded-full mx-auto flex items-center justify-center"
-                         style={{ backgroundColor: theme.teal }}>
-                      <svg className="w-12 h-12" fill="none" stroke="white" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.031 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                      </svg>
-                    </div>
-                    <p className="text-lg font-medium" style={{ color: theme.dark }}>
+                    <div className="w-24 h-24 rounded-full mx-auto overflow-hidden">
+                      <Image 
+                        src="/img/image-2.jpg" 
+                        alt="Professional Healthcare" 
+                        width={96} 
+                        height={96} 
+                        className="w-full h-full object-cover" 
+                      />
+                    </div>                    <p className="text-lg font-medium" style={{ color: theme.dark }}>
                       Excellence in Care
                     </p>
                   </div>
